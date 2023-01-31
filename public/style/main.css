@@ -1,0 +1,64 @@
+body {
+
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(14,16,18);
+}
+
+.main-pane {
+
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(14,16,18);
+    padding: 0.5rem 5rem;
+    color: aliceblue;
+    margin-top: 3rem;
+
+}
+
+.main-pane h1{
+
+    font-size: 3rem;
+    margin: 0;
+}
+
+.main-pane a{
+
+    text-decoration: none;
+    color: aliceblue;
+
+}
+
+.list ul {
+
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin: 0;
+}
+
+
+.list {
+
+    align-self: center;
+
+}
+
+.list h2{
+
+    margin: 0;
+}
+
+.list a{
+
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.list a:hover{
+
+    
+    color: rgb(0, 122, 252);
+}
+

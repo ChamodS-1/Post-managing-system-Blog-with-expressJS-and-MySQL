@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('extra/meta-data') %>
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/allpost.css">
+    <link rel="stylesheet" href="/style/footer.css">
+    <title>All-Posts</title>
+</head>
+
+<body>
+
+    <%- include('extra/main-pane') %>
+
+    <h1>all Posts.</h1>
+
+    <h3 id="lenghth">We have <%= alenght %> Posts</h3>
+
+
+
+            <ul>
+   <% for(const key of keys)  { %>
+        
+        <li>
+        <div id="post-pane">
+
+            <h2><%= key.title %></h2>
+            <p><i>by <%= key.name %></i></p>
+            <h3><%= key.summery %></h3>
+           
+    
+            <div id="buttons">
+            <span><a href=""><b>Delete Post</b></a></span><span><a href="/edite/<%=key.post_id%>"><b>Edite Post</b></a></span>
+            <button id="view-post"><h3><a href="/all-post/<%=key.post_id%>">View Post</a></h3></button>
+        </div>
+        </div>
+    </li>
+
+   <% } %>
+
+</ul>
+
+
+    
+
+    <%- include('extra/footer') %>
+
+    </body>
+
+    </html>
+    

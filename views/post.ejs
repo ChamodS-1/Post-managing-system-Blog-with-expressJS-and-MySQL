@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('extra/meta-data') %>
+        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/post.css">
+        <link rel="stylesheet" href="/style/footer.css">
+        <title>Post</title>
+</head>
+
+<body>
+
+    <%- include('extra/main-pane') %>
+
+        <h1>Make it easy.</h1>
+
+
+        <div id="inser-form">
+
+            <div id="form-head">
+                <h4>YOUR NEW POST</h4>
+                <img src="/image/6076f540d539fa8c97126f0b_straigtaway.svg" alt="image">
+                <h2>Can easy to crate new post in here ...</h2>
+            </div>
+
+            <div id="form">
+
+                <form action="/create-post" method="POST">
+
+                    <label for="post-title">
+                        <h3>Post Title</h3>
+                    </label>
+                    <input type="text" name="titlepost" id="post-title" required>
+
+                    <label for="form-summery">
+                        <h3>summary</h3>
+                    </label>
+                    <input type="text" name="titlesummery" id="form-summery" required>
+
+                    <label for="post-content">
+                        <h3>post content</h3>
+                    </label>
+                    <textarea name="postcontent" rows="7" id="post-content" required></textarea>
+
+                    <label for="post-author">
+                        <h3>author</h3>
+                    </label>
+                    <input type="text" name="titleauthor" id="post-author" >
+
+                    <select name="select" id="selectname">
+
+                      <% for (key of keys) { %>
+                        <option value="<%= key.id %>"><%= key.name %></option>
+
+                      <% } %>
+
+                    </select>
+
+                    <button type="submit">
+                        <h3>Submit your Post</h3>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+        <%- include('extra/footer') %>
+
+</body>
+
+</html>
+

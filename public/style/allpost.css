@@ -1,0 +1,88 @@
+body{
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+
+h1 {
+
+    text-align: center;
+    font-size: 4rem;
+    color: aliceblue;
+    margin-top: 0.5rem;
+}
+
+#lenghth {
+
+    text-align: center;
+    font-size: 2rem;
+    color: aliceblue;
+    margin-top: 0.5rem;
+}
+
+
+
+#post-pane{
+
+    background-color: rgb(23,28,31);
+    text-align: center;
+    color: aliceblue;
+    width: 50%;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin: 1.7rem auto;
+}
+
+#post-pane h2{
+
+    font-size: 3rem;
+}
+
+#view-post{
+
+    margin-right: 3rem;
+    border-radius: 30px;
+    background: none;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 0.7rem 1rem;
+    color: aliceblue;
+    margin: 0;
+    font-family: inherit;
+}
+
+#view-post:hover{
+
+    color: rgb(0, 122, 252);
+    border: 1px solid rgb(0, 122, 252);
+    background-color: rgb(0, 122, 252,0.1);
+    cursor: pointer;
+    
+
+}
+
+#view-post h3{
+
+    margin: 0;
+}
+
+#post-pane a{
+
+
+    color: aliceblue;
+    text-decoration: none;
+}
+
+#buttons{
+
+    padding: 0.5rem 0;
+}
+
+span{
+
+    margin-right: 1rem;
+}
+
+span a b:hover{
+
+    color: rgb(0, 122, 252);
+}
+

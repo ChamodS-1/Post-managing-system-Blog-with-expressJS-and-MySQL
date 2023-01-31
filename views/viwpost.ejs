@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('extra/meta-data') %>
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/viwpost.css">
+    <link rel="stylesheet" href="/style/footer.css">
+    <title>View-Posts</title>
+</head>
+
+<body>
+
+    <%- include('extra/main-pane') %>
+
+    <h1>view Posts.</h1>
+
+    <% for (key of keys) { %>
+
+        <div id="post-pane">
+            <h2><%= key.title %></h2>
+            <p><i>by   <%= key.name%><span> | </span><span class="time"><%= key.date %></span></i></p>
+            <hr>
+            <h3><%=key.body %></h3>
+    
+        </div>
+
+
+
+   <% } %>
+
+   
+
+    <%- include('extra/footer') %>
+
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+
+    text-align: center;
+    font-size: 4rem;
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+}
+
+
+
+#inser-form{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(23,28,31);
+    width: 80%;
+    gap: 15rem;
+    border-radius: 15px;
+    margin: 2rem auto;
+    padding: 3.5rem 4rem;
+    color: aliceblue;
+}
+
+#form-head{
+
+    width: 50%;
+   
+}
+
+#form-head h4{
+
+    background-color: rgb(47,192,120);
+    width: fit-content;
+    padding: 0.4rem;
+    border-radius: 5px;
+}
+
+#image-suc img {
+
+width: 40%;
+    
+}

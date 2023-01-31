@@ -1,0 +1,15 @@
+[
+    {
+        "titlepost": "Hello World",
+        "titlesummery": "This is my first Blog",
+        "postcontent": "NodeJS & Express Js is amazing",
+        "titleauthor": "swachillei wchaaliiner"
+    },
+    {
+        "titlepost": "Super Coo;!",
+        "titlesummery": "This is Fantastic",
+        "postcontent": "Node JS is Very popular server side programme language.",
+        "titleauthor": "Chamod Basnayake"
+    }
+   
+]
