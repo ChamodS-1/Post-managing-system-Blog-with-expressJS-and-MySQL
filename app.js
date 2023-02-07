@@ -26,7 +26,7 @@ app.get('/create-post', async function (req, res) {
     mydata.query('select * from authors',function(err,result,fields){
        
         const x = result;
-        console.log(x);
+       // console.log(x);
         res.render('post',{keys:x});
 
     });
@@ -43,7 +43,7 @@ app.post('/create-post',  function (req, res) {
         req.body.select,
     ];
 
-     mydata.query('insert into posts (title,summery,body,author_id) values (?)',[ data,]);
+     mydata.query('insert into posts (title,summery,body,author_id) values (?)',[data]);
 
     res.redirect('/success');
    
@@ -52,6 +52,18 @@ app.post('/create-post',  function (req, res) {
 app.get('/success', function (req, res) {
 
     res.render('successful');
+
+});
+
+app.get('/updated', function (req, res) {
+
+    res.render('updated');
+
+});
+
+app.get('/deleted', function (req, res) {
+
+    res.render('deleted');
 
 });
 
@@ -74,7 +86,7 @@ app.get('/all-post/:id', function (req, res) {
 
     mydata.query('select posts.*,authors.* from authors inner join posts on posts.author_id=authors.id where posts.id=?',[newID],function(err,result,fields){
 
-        console.log(result);
+        //console.log(result);
 
        /* const postData = {
             ...result,
@@ -100,9 +112,9 @@ app.get('/edite/:id', function (req, res) {
 
     const newID = req.params.id;
 
-    mydata.query('select posts.*,authors.* posts.id  from authors inner join posts on posts.author_id=authors.id where posts.id=?',[newID],function(err,result,fields){
+    mydata.query('select posts.*,authors.*, posts.id as post_id from authors inner join posts on posts.author_id=authors.id where posts.id=?',[newID],function(err,result,fields){
 
-         console.log(result);
+        // console.log(result);
          res.render('edite',{keys:result});
         
      });
@@ -111,17 +123,38 @@ app.get('/edite/:id', function (req, res) {
 
 app.post('/edite/:id', function (req, res) {
 
-   // const newID = req.params.id;
-  console.log( req.body.titlepost);
-  console.log(req.params.id);
+    const newID = +req.params.id;
+    const title = req.body.titlepost;
+     console.log( req.body.titlepost);
+     console.log(newID);
 
-    mydata.query('update posts set title=? where id=?',req.body.titlepost,req.params.id);
+    mydata.query('update posts set title=? where id=?',[title,newID],function(err){
 
-        // console.log(result);
-         res.redirect('/success');
-        // res.render('<p>ssts</p>');
-        
-     
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect('/updated');
+        }
+
+
+    });
+});
+
+
+app.get('/delete/:id', function (req, res) {
+
+    const newID = req.params.id;
+
+    mydata.query('delete from posts where id=?',[newID],function(err){
+
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.redirect('/deleted');
+        }  
+     });
 
 });
 

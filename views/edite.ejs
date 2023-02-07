@@ -24,11 +24,11 @@
                 <h2>Can easy to crate new post in here ...</h2>
             </div>
 
-            <% for (key of keys) { %>
+            <% for(key of keys) { %>
 
             <div id="form">
 
-                <form action="/edite/:id" method="POST">
+                <form action="/edite/<%=key.post_id%>" method="POST">
 
                     <label for="post-title">
                         <h3>Post Title</h3>
