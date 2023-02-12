@@ -23,19 +23,18 @@ app.get('/blog-home', function (req, res) {
 
 app.get('/create-post', async function (req, res) {
 
-    mydata.query('select * from authors',function(err,result,fields){
-       
+    mydata.query('select * from authors', function (err, result, fields) {
+
         const x = result;
-       // console.log(x);
-        res.render('post',{keys:x});
+        res.render('post', { keys: x });
 
     });
 
 });
 
-app.post('/create-post',  function (req, res) {
+app.post('/create-post', function (req, res) {
 
-    const data =[
+    const data = [
 
         req.body.titlepost,
         req.body.titlesummery,
@@ -43,10 +42,10 @@ app.post('/create-post',  function (req, res) {
         req.body.select,
     ];
 
-     mydata.query('insert into posts (title,summery,body,author_id) values (?)',[data]);
+    mydata.query('insert into posts (title,summery,body,author_id) values (?)', [data]);
 
     res.redirect('/success');
-   
+
 });
 
 app.get('/success', function (req, res) {
@@ -69,12 +68,11 @@ app.get('/deleted', function (req, res) {
 
 app.get('/all-post', function (req, res) {
 
-    mydata.query('select posts.*,authors.*,posts.id as post_id from authors inner join posts on posts.author_id=authors.id',function(err,result,fields){
-       
+    mydata.query('select posts.*,authors.*,posts.id as post_id from authors inner join posts on posts.author_id=authors.id', function (err, result, fields) {
+
         const x = result;
         const length = x.length;
-       // console.log(x);
-        res.render('allpost',{alenght:length,keys:x});
+        res.render('allpost', { alenght: length, keys: x });
 
     });
 
@@ -84,25 +82,25 @@ app.get('/all-post/:id', function (req, res) {
 
     const newID = req.params.id;
 
-    mydata.query('select posts.*,authors.* from authors inner join posts on posts.author_id=authors.id where posts.id=?',[newID],function(err,result,fields){
+    mydata.query('select posts.*,authors.* from authors inner join posts on posts.author_id=authors.id where posts.id=?', [newID], function (err, result, fields) {
 
         //console.log(result);
 
-       /* const postData = {
-            ...result,
-            date : result.date.toISOString(),
-            humanRead : result.date.toLocalDateString('en-US',{
+        /* const postData = {
+             ...result,
+             date : result.date.toISOString(),
+             humanRead : result.date.toLocalDateString('en-US',{
+ 
+                 weekday :'long',
+                 year : 'numeric',
+                 month : 'long',
+                 day :'numeric'
+ 
+             }),
+ 
+         };*/
 
-                weekday :'long',
-                year : 'numeric',
-                month : 'long',
-                day :'numeric'
-
-            }),
-
-        };*/
-
-        res.render('viwpost',{keys:result});
+        res.render('viwpost', { keys: result });
     });
 
 });
@@ -112,12 +110,11 @@ app.get('/edite/:id', function (req, res) {
 
     const newID = req.params.id;
 
-    mydata.query('select posts.*,authors.*, posts.id as post_id from authors inner join posts on posts.author_id=authors.id where posts.id=?',[newID],function(err,result,fields){
+    mydata.query('select posts.*,authors.*, posts.id as post_id from authors inner join posts on posts.author_id=authors.id where posts.id=?', [newID], function (err, result, fields) {
 
-        // console.log(result);
-         res.render('edite',{keys:result});
-        
-     });
+        res.render('edite', { keys: result });
+
+    });
 
 });
 
@@ -125,15 +122,15 @@ app.post('/edite/:id', function (req, res) {
 
     const newID = +req.params.id;
     const title = req.body.titlepost;
-     console.log( req.body.titlepost);
-     console.log(newID);
+    const summery = req.body.titlesummery;
+    const postcontent = req.body.postcontent;
+    
+    mydata.query('update posts set title=?,summery=?,body=? where id=?', [title,summery,postcontent,newID], function (err) {
 
-    mydata.query('update posts set title=? where id=?',[title,newID],function(err){
-
-        if(err){
+        if (err) {
             console.log(err);
         }
-        else{
+        else {
             res.redirect('/updated');
         }
 
@@ -146,15 +143,15 @@ app.get('/delete/:id', function (req, res) {
 
     const newID = req.params.id;
 
-    mydata.query('delete from posts where id=?',[newID],function(err){
+    mydata.query('delete from posts where id=?', [newID], function (err) {
 
-        if(err){
+        if (err) {
             console.log(err);
         }
-        else{
+        else {
             res.redirect('/deleted');
-        }  
-     });
+        }
+    });
 
 });
 
@@ -164,7 +161,5 @@ app.use(function (req, res) {
     res.render('404');
 
 });
-
-
 
 app.listen(3000);
